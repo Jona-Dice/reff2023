@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<title>Formulario</title>
+	<style>
+		body {
+			background-color: #1D203b;
+			background-image: url(xcv.png);
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 25%;
+		}
+	</style>
+</head>
+<body>
+<div class="container py-5">
+	<div class="row justify-content-center">
+		<div class="col-md-7">
+			<div class="card border-primary">
+				<div class="card-header bg-primary text-white text-center">
+					<h4 class="card-title text-uppercase">Alcaldía Municipal de El Congo <br> Registro del Estado Familiar <br> Departamento de Santa Ana <br> Tel. 2445-7218</h4>
+				</div>
+				<div class="card-body">
+					<form action="registrar2.php" method="post" class="needs-validation"  novalidate onsubmit="return validarform()" id= "formulario">
+						<div class="mb-2" align="right">
+							<script>
+                                    var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+                                    var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+                                    var f=new Date();                                    
+                                    document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+                                    </script>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 col-md-12 col-xs-12">
+								<div class="form-group mb-2">
+									<div class="input-group">
+										<span class="input-group-text">Nombre:</span>
+										<input type="text" aria-label="F name" id="nombre" name="nombre" class="form-control" required>
+										<div class="invalid-feedback">  
+                                                Ingresar nombre.  
+                                            </div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-12 col-xs-12">  
+                                    <div class="form-group mb-2">  
+                                        <div class="input-group">
+                                            <span class="input-group-text">Fecha del hecho:</span>
+                                            <input type="date" aria-label="First name" id="fechahecho" name="fechahecho" class="form-control" required>
+                                            <div class="invalid-feedback">  
+                                                Ingresar la fecha del hecho.  
+                                            </div>                                            
+                                        </div>
+                                    </div>  
+                                </div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 col-md-12 col-xs-12">
+								<div class="form-group mb-2">
+									<div class="input-group">
+										<span class="input-group-text" id="basic-addon3">Nombre de los padres:</span>
+										<input type="text" class="form-control" id="nombrepadres" name="nombrepadres" aria-describedby="basic-addon3" required>
+										<div class="invalid-feedback">
+											Ingresa el nombre de los Padres.
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-12 col-xs-12">
+								<div class="form-group mb-2">
+									<div class="input-group">
+										<span class="input-group-text" id="basic-addon3">DUI:</span>
+										<input type="text" class="form-control" id="dui" name="dui" pattern="[0-9]{8}-[0-9]{1}" placeholder="00000000-0" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-sm-12 col-md-12 col-xs-12">
+								<div class="form-group">
+									<label>Solicitud de partida:</label>
+								</div>
+								<div class="border border-dark p-2">
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="nacimiento" name="solicitud[]" value="Nacimiento">
+											<label class="custom-control-label" for="nacimiento">Nacimiento</label>
+										</div>
+									</div>
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="defuncion" name="solicitud[]" value="Defuncion">
+											<label class="custom-control-label" for="defuncion">Defunción</label>
+										</div>
+									</div>
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="matrimonio" name="solicitud[]" value="Matrimonio">
+											<label class="custom-control-label" for="matrimonio">Matrimonio</label>
+										</div>
+									</div>
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="divorcio" name="solicitud[]" value="Divorcio">
+											<label class="custom-control-label" for="divorcio">Divorcio</label>
+										</div>
+									</div>
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="union" name="solicitud[]" value="UnionNoMatrimonial">
+											<label class="custom-control-label" for="union">Unión no matrimonial</label>
+										</div>
+									</div>
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="patrimonial" name="solicitud[]" value="RegimenPatrimonial">
+											<label class="custom-control-label" for="patrimonial">Régimen patrimonial</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-sm-12 col-md-12 col-xs-12">
+								<div class="form-group">
+									<label>Otros:</label>
+								</div>
+								<div class="border border-dark p-2">
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="autentidadefirma" name="otros[]" value="AutentidaFirma">
+											<label class="custom-control-label" for="autentidadefirma">Autentida de Firma</label>
+										</div>
+									</div>
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="certificacioncedula" name="otros[]" value="CertificacionCedula">
+											<label class="custom-control-label" for="certificacioncedula">Certificación de cédula</label>
+										</div>
+									</div>
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="constancia" name="otros[]" value="Constancia">
+											<label class="custom-control-label" for="constancia">Constancia</label>
+										</div>
+									</div>
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="carnetmenoridad" name="otros[]" value="CarnetMenoridad">
+											<label class="custom-control-label" for="carnetmenoridad">Carnet de menoridad</label>
+										</div>
+									</div>
+									<div class="form-check-inline">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="refrenda" name="otros[]" value="Refrenda">
+											<label class="custom-control-label" for="refrenda">Refrenda</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">  
+                                <div class="col-sm-12 col-md-12 col-xs-12">  
+                                    <div class="form-group">  
+                                        <label for="address">Observaciones:</label>  
+                                        <textarea class="form-control" rows="3" id="address" name="observaciones" placeholder="Escribir texto..." aria-describedby="inputGroupPrepend" required></textarea>  
+                                        <div class="invalid-feedback">Escriba en Observaciones</div>  
+                                    </div>  
+                                </div>  
+                            </div>
+                            <hr>
+                            <div class="row">  
+                                <div class="col-sm-12 col-md-12 col-xs-12 text-center">  
+                                    <div class="float-right">  
+                                        <button class="btn btn-danger rounded-0" type="reset">Limpiar</button>  
+                                        <button class="btn btn-primary rounded-0" id="enviar" type="submit">Registrar</button>  
+                                    </div>                            
+                                </div>  
+                            </div>   
+					</form>
+					<!--Este codigo nos servira para hacer que la pagina se recarge sola  -->
+					<div id="resultado">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+
+<!--  <script src="javascript/scriptb.js"></script> -->
+En este codigo creamos la api con ajax
+<script>
+	$("enviar").click(function(){
+		$.ajax({
+			url: "registrar2.php",
+			type: "post",
+			data: $("formulario").serialize(),
+			success: function(resultado){
+				//$("#resultado").html(resultado);
+				window.location.href = 'registrar2.php';
+			}
+		})
+	})
+</script> -->
+
+
+
+</body>
+</html>
